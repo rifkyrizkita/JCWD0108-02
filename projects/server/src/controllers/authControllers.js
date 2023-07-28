@@ -21,7 +21,9 @@ module.exports = {
         password: hashPassword,
       });
       const payload = { id: result.id };
+
       const token = jwt.sign(payload, process.env.KEY_JWT, { expiresIn: "1h" });
+
       res.status(200).send({
         status: true,
         message: "Add new cashier success",
@@ -42,7 +44,9 @@ module.exports = {
       const isValid = await bcrypt.compare(password, result.password)
       if (!isValid) throw { message: "Wrong password" };
       const payload = {id:result.id}
+
       const token = jwt.sign(payload, process.env.KEY_JWT, { expiresIn: "1d" })
+
       res.status(200).send({
         status: true,
         message: "Login success",
@@ -66,19 +70,24 @@ module.exports = {
       console.log(error);
     }
   },
+
   forgotPassword: async (req, res) => {
+
     try {
       const { email } = req.body;
       const result = await cashier.findOne({where: { email: email }});
       if (result == null) throw { msg: "Account not found" };
       const username = result.username;
       const payload = { id: result.id };
+
       const token = jwt.sign(payload, process.env.KEY_JWT, { expiresIn: "1h" });
+
       const data = await fs.readFileSync("./templateforgotpass.html", "utf-8");
       const tempCompile = await handlebars.compile(data);
       const tempResult = tempCompile({ username, token });
       await transporter.sendMail({
         from: process.env.EMAIL_TRANSPORTER,
+
         to: email,
         subject: "Reset your password",
         html: tempResult,
@@ -127,6 +136,7 @@ module.exports = {
       console.log(error);
     }
   },
+
   getCashiers: async (req,res) => {
     try {
       const page = +req.query.page || 1;
@@ -150,4 +160,5 @@ module.exports = {
       res.status(400).send(error);
     }
   }
+
 };
