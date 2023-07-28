@@ -31,6 +31,7 @@ app.get("/api/greetings", (req, res, next) => {
     message: "Hello, Student !",
   });
 });
+app.use("/api/auth", authRouters)
 
 // ===========================
 
@@ -65,7 +66,6 @@ app.get("*", (req, res) => {
 });
 
 //#endregion
-app.use("/auth", authRouters)
 app.listen(PORT, (err) => {
   if (err) {
     console.log(`ERROR: ${err}`);
