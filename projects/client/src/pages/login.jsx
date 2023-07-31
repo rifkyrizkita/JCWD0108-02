@@ -52,7 +52,6 @@ export const Login = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLogin(true);

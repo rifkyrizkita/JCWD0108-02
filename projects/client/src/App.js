@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Axios from "axios";
 import { useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -10,15 +9,13 @@ import { useEffect, useState } from "react";
 import { AdminDashboard } from "./pages/adminDashboard";
 import { Cashier } from "./components/dashboard/manageCashier/cashier";
 import { AdminHome } from "./components/dashboard/home/adminHome";
+import { ChangeProfilePicture } from "./components/imgProfle";
 
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
   { path: "/forgotpass", element: <ForgotPassword /> },
-  { path: "resetpass", element: <ResetPassword /> },
-  { path: "/changeprofilepicture", element: <ChangeProfilePicture /> },
-  { path: "/footer", element: <Footer /> },
   { path: "/resetpass/:token", element: <ResetPassword /> },
-
+  { path: "/changeprofilepicture", element: <ChangeProfilePicture /> },
   {
     path: "/admin",
     element: <AdminDashboard />,

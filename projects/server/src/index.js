@@ -7,6 +7,9 @@ const { join } = require("path");
 
 const { categoryRouters, productRouters, authRouters } = require('./routers')
 const db = require('./models')
+console.log(process.env.PASS_TRANSPORTER);
+
+
 
 
 const PORT = process.env.PORT || 8000;
