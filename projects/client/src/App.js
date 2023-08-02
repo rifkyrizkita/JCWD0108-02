@@ -24,6 +24,17 @@ const router = createBrowserRouter([
       { path: "cashier", element: <Cashier /> },
     ],
   },
+<<<<<<< Updated upstream
+=======
+  {path:"/",
+  element:<Navbar/>,
+  children:[
+    {path: "/",element:<Homepage/>},
+  ]
+},
+//{path: "/dashboard",element:<DashboardProduct/>},
+{path: "/cashier",element:<DashboardCashier/>},
+>>>>>>> Stashed changes
 ]);
 function App() {
   const token = localStorage.getItem("token");
