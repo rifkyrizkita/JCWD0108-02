@@ -5,13 +5,15 @@ import { setValue } from "../../redux/cashierSlice";
 
 export const Logout = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch();
+    
     const logout = () => {
+      try {
+        
         localStorage.removeItem("token")
-        dispatch(setValue({}))
-        setTimeout(() => {
-            navigate("/login");
-          }, 1000);
+       navigate("/login")
+      } catch (error) {
+        console.log(error);
+      }
     }
     return(
       <Text color="red" cursor="pointer" onClick={logout}>

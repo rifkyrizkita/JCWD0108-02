@@ -12,6 +12,7 @@ import { BasicUsage } from "./modalAvatar";
 import { useSelector } from "react-redux";
 
 export const AvatarMenu = () => {
+  
     const data = useSelector((state)=> state.cashier.value)
     console.log(data);
   return (

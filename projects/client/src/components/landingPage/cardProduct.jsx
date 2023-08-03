@@ -11,16 +11,16 @@ export const Product = ({ selectedCategory, searchQuery, reload, setReload }) =>
     const currentPage = parseInt(searchParams.get('page'), 10) || 1;
     return currentPage;
   };
-  const showCounterComponent = products && products.length > 0
-
-
+  
+  
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(getCurrentPageFromURL());
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [totalPage, setTotalPage] = useState(1);
   const [sortOption, setSortOption] = useState('productName');
   const navigate = useNavigate();
-
+  const showCounterComponent = products && products.length > 0
+  
   const getProducts = async (page, limit, category, sortField, query) => {
     try {
       const response = await Axios.get(
